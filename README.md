@@ -1,11 +1,12 @@
 # Windows
 Secures files with an encryption algorithm
-Uses a 16th century encryption technique, focuses on the use of c rather than the encryption technique.
-To get the executable clone the dir and execute:
+Uses a 16th century encryption technique, focus on learning C rather than the encryption technique.
+How to use:
+Clone the repo and run
 ```
 make
 ```
-To execute in pure NT kernel systems, extract the lines from Makefile and execute line by line
+To execute on windows systems, check the first line in the makefile
 To run the program type:
 ```
 ./seint -h

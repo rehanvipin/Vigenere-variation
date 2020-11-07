@@ -4,7 +4,7 @@
 
 void put_header(const char *filename, int hedlen, FILE *fp)
 {
-	int n = fwrite(filename, sizeof(char), hedlen, fp);
+	fwrite(filename, sizeof(char), hedlen, fp);
 }
 
 void get_header(char *output, int hedlen, FILE *fp)

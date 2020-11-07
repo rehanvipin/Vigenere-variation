@@ -1,13 +1,19 @@
 #include"reqs.h"
 
+char HELPMSG[] = "Usage:\n"
+				 "seint -[OPTION] file\n"
+				 "Options- \n"
+				 "\t-e : encrypt the file\n" 
+				 "\t-d : decrypt the file\n" 
+				 "\t-h : Display this help message";
+
 int main(int argc, char **argv)
 {
 	char  passwd[20];
 
 	if(argc < 3)
 	{
-		printf("%s",\
-				"Usage: \n seint -[OPTION] file\n Options-\n -e : encrypt the file \n -d : decrypt the file \n -h : Display this help message\n");
+		printf("%s\n", HELPMSG);
 		return 0;
 	}
 
@@ -22,13 +28,13 @@ int main(int argc, char **argv)
 		{
 			case('d'):break;
 			case('e'):{encrypt = 1; break;}
-			case('h'):{printf("Run seint without options to see the help message\n"); return 0;}	//ToDo Implement a proper help response
+			case('h'):{printf("%s\n", HELPMSG); return 0;}
 			case('-'):continue;
 			default:{printf("Wrong option %c\n",*flags);return -1;}
 		}
 	}
 
-	// Getting the password from the user and performing the magic on the indices array
+	// Get the password from the user and perfrom magic on the indices array
 	printf("Enter the password\n");
 	scanf("%s",passwd);
 
@@ -37,7 +43,7 @@ int main(int argc, char **argv)
 
 	fill(indc, len); // Fills indc with 0,1,2....
 	sel_sort(passwd, indc, len);
-	//Done with the indices magic Continuw with the encrpytion or decryption
+	//Done with the indices magic Continue with the encrpytion or decryption
 	
 	char secure_file[HEADLEN];
 	int buffer[BUFSIZ];
@@ -54,7 +60,7 @@ int main(int argc, char **argv)
 	if(encrypt)
 	{
 		FILE *output = fopen(secure_file, "wb");
-		int red = 0; // TO count how many numbers got read
+		int red = 0; // To count how many numbers were read
 		put_header(filename, HEADLEN, output);
 
 		do
@@ -74,7 +80,6 @@ int main(int argc, char **argv)
 		char og_filename[HEADLEN] = {};
 		int red = 0;
 		get_header(og_filename, HEADLEN, safe_file);
-		//strcpy(og_filename, "op");
 		FILE *og_file = fopen(og_filename, "wb");
 
 		do

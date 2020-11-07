@@ -6,7 +6,6 @@ void sel_sort(char *org, int *dup, int len)
 	void cswap(char *, char *);
 	int i, j, min_idx; 
 
-
 	for (i = 0; i < len-1; i++) 
 	{ 
 
