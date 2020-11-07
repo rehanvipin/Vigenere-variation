@@ -9,7 +9,7 @@ char HELPMSG[] = "Usage:\n"
 
 int main(int argc, char **argv)
 {
-	char  passwd[20];
+	char passwd[20];
 
 	if(argc < 3)
 	{
@@ -35,7 +35,7 @@ int main(int argc, char **argv)
 	}
 
 	// Get the password from the user and perfrom magic on the indices array
-	printf("Enter the password\n");
+	printf("Enter the password (Max 19 chars)\n");
 	scanf("%s",passwd);
 
 	int len = strlen(passwd);
@@ -77,7 +77,7 @@ int main(int argc, char **argv)
 	}
 	else
 	{
-		char og_filename[HEADLEN] = {};
+		char og_filename[HEADLEN] = {0};
 		int red = 0;
 		get_header(og_filename, HEADLEN, safe_file);
 		FILE *og_file = fopen(og_filename, "wb");
